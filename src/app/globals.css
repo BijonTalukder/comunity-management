@@ -1,26 +1,189 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-heading: var(--font-sans);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  --background: oklch(0.985 0.002 265);
+  --foreground: oklch(0.21 0.03 265);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.21 0.03 265);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.21 0.03 265);
+  --primary: oklch(0.51 0.19 271);
+  --primary-foreground: oklch(0.99 0.005 271);
+  --secondary: oklch(0.96 0.008 265);
+  --secondary-foreground: oklch(0.28 0.035 265);
+  --muted: oklch(0.965 0.006 265);
+  --muted-foreground: oklch(0.53 0.025 265);
+  --accent: oklch(0.95 0.02 271);
+  --accent-foreground: oklch(0.35 0.09 271);
+  --destructive: oklch(0.58 0.22 26);
+  --border: oklch(0.92 0.008 265);
+  --input: oklch(0.92 0.008 265);
+  --ring: oklch(0.51 0.19 271);
+  --chart-1: oklch(0.55 0.19 271);
+  --chart-2: oklch(0.68 0.15 195);
+  --chart-3: oklch(0.72 0.16 65);
+  --chart-4: oklch(0.63 0.19 340);
+  --chart-5: oklch(0.66 0.17 150);
+  --radius: 0.7rem;
+  --sidebar: oklch(1 0 0);
+  --sidebar-foreground: oklch(0.32 0.03 265);
+  --sidebar-primary: oklch(0.51 0.19 271);
+  --sidebar-primary-foreground: oklch(0.99 0.005 271);
+  --sidebar-accent: oklch(0.96 0.015 271);
+  --sidebar-accent-foreground: oklch(0.35 0.09 271);
+  --sidebar-border: oklch(0.93 0.008 265);
+  --sidebar-ring: oklch(0.51 0.19 271);
+  --success: oklch(0.6 0.14 150);
+  --success-foreground: oklch(0.99 0.01 150);
+  --warning: oklch(0.72 0.16 70);
+  --warning-foreground: oklch(0.26 0.06 70);
+}
+
+.dark {
+  --background: oklch(0.19 0.02 265);
+  --foreground: oklch(0.97 0.006 265);
+  --card: oklch(0.235 0.023 265);
+  --card-foreground: oklch(0.97 0.006 265);
+  --popover: oklch(0.235 0.023 265);
+  --popover-foreground: oklch(0.97 0.006 265);
+  --primary: oklch(0.7 0.16 275);
+  --primary-foreground: oklch(0.19 0.05 275);
+  --secondary: oklch(0.29 0.025 265);
+  --secondary-foreground: oklch(0.97 0.006 265);
+  --muted: oklch(0.28 0.022 265);
+  --muted-foreground: oklch(0.7 0.02 265);
+  --accent: oklch(0.32 0.05 275);
+  --accent-foreground: oklch(0.93 0.04 275);
+  --destructive: oklch(0.68 0.19 24);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 16%);
+  --ring: oklch(0.7 0.16 275);
+  --chart-1: oklch(0.7 0.16 275);
+  --chart-2: oklch(0.75 0.14 195);
+  --chart-3: oklch(0.78 0.15 65);
+  --chart-4: oklch(0.7 0.17 340);
+  --chart-5: oklch(0.72 0.15 150);
+  --sidebar: oklch(0.215 0.022 265);
+  --sidebar-foreground: oklch(0.93 0.008 265);
+  --sidebar-primary: oklch(0.7 0.16 275);
+  --sidebar-primary-foreground: oklch(0.19 0.05 275);
+  --sidebar-accent: oklch(0.3 0.045 275);
+  --sidebar-accent-foreground: oklch(0.93 0.04 275);
+  --sidebar-border: oklch(1 0 0 / 12%);
+  --sidebar-ring: oklch(0.7 0.16 275);
+  --success: oklch(0.72 0.14 150);
+  --success-foreground: oklch(0.2 0.05 150);
+  --warning: oklch(0.78 0.15 70);
+  --warning-foreground: oklch(0.24 0.06 70);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+}
+@layer base {
+  /* Tabular figures keep amounts and counts aligned in tables. */
+  .tabular {
+    font-variant-numeric: tabular-nums;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  /* Subtle scrollbars so dense tables don't feel heavy. */
+  .thin-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+}
+
+/* ---- Data-visualisation palette -------------------------------------------
+   Validated categorical slots (adjacent + all-pairs CVD separation and
+   normal-vision floor pass in both modes). Charts reference these roles, never
+   raw hex, so the light/dark swap happens in one place.
+   Light-mode aqua sits below 3:1 on the card surface, so every mark using it
+   carries a visible direct label (the relief rule).                          */
+:root {
+  --viz-surface: oklch(1 0 0);
+  --viz-series-1: #2a78d6;
+  --viz-series-2: #eb6834;
+  --viz-series-3: #1baf7a;
+  --viz-grid: oklch(0.92 0.008 265);
+  --viz-axis: oklch(0.53 0.025 265);
+}
+
+.dark {
+  --viz-surface: oklch(0.235 0.023 265);
+  --viz-series-1: #3987e5;
+  --viz-series-2: #d95926;
+  --viz-series-3: #199e70;
+  --viz-grid: oklch(1 0 0 / 12%);
+  --viz-axis: oklch(0.7 0.02 265);
+}
+
+@keyframes list-pending {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(400%);
+  }
 }
